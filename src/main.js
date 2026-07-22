@@ -2,7 +2,7 @@ import './style.css';
 
 const API_KEY = import.meta.env.VITE_NASA_API_KEY;
 
-// ---------- APOD as background ----------
+// APOD as background
 fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`)
   .then(response => response.json())
   .then(data => {
@@ -15,7 +15,7 @@ fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`)
     document.querySelector("#apod-caption").innerHTML = `<p>Error: ${err.message}</p>`;
   });
 
-// ---------- Clock ----------
+// Clock
 function updateClock() {
   const now = new Date();
   const h = String(now.getHours()).padStart(2, '0');
@@ -25,8 +25,14 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
-// ---------- Search bar with engine picker ----------
+//search bar and engine picker
 let currentEngine = localStorage.getItem("search-engine") || "https://search.brave.com/search?q=";
+
+
+const savedIcon = localStorage.getItem("search-engine-icon");
+if (savedIcon) {
+  document.querySelector("#engine-btn").innerHTML = `<img src="${savedIcon}" alt="engine" />`;
+}
 
 document.querySelector("#search-bar").addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
@@ -111,7 +117,7 @@ Object.keys(toggles).forEach(key => {
   });
 });
 
-// ---------- Widgets ----------
+// Widgets
 function getMoonPhase() {
   const knownNewMoon = new Date('2000-01-06T18:14:00Z');
   const lunarCycle = 29.53058867;
@@ -232,7 +238,7 @@ document.querySelector("#search-bar-wrapper").addEventListener("click", (e) => {
   }
 });
 const luckyLinks = [
-  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // not a rick roll
+  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // not a rick roll btw
   "https://zoomquilt.org/", // 
   "https://h1ghf1ve.me/",
   "https://cat-bounce.com/",
