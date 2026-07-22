@@ -1,15 +1,266 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
-  position: relative;
-  background: #100224;
+  background-size: cover;
+  background-position: center;
+  background-color: #100224;
   color: white;
   font-family: sans-serif;
-}
-h1 {
-  font-family: 'Monoton', sans-serif;
+  position: relative;
 }
 
-p {
-  font-family: 'Rubik Maze', sans-serif;
+#clock {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#settings-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+}
+
+#settings-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: 90%;
+  min-height: 250px;
+  background: rgba(0,0,0,0.9);
+  padding: 30px;
+  border-radius: 12px;
+  z-index: 10;
+}
+
+#settings-panel.hidden {
+  display: none;
+}
+
+#settings-panel label {
+  display: block;
+  margin: 12px 0;
+  color: white;
+  font-size: 16px;
+}
+
+#search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+#search-bar-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 500px;
+  max-width: 80%;
+  background: rgba(0,0,0,0.6);
+  border-radius: 30px;
+  padding: 0 8px;
+}
+
+#engine-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+
+#engine-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+#engine-dropdown {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: rgba(0,0,0,0.9);
+  border-radius: 8px;
+  padding: 8px 0;
+  min-width: 180px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 15;
+}
+#engine-dropdown.hidden {
+  display: none;
+}
+.engine-option {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+}
+
+.engine-option:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.engine-option img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  margin-right: 8px;
+}
+
+#search-bar {
+  flex: 1;
+  padding: 14px 10px;
+  border-radius: 30px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+#search-bar:focus {
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+#apod-caption {
+  position: fixed;
+  bottom: 140px;
+  left: 20px;
+  font-size: 14px;
+  opacity: 0.8;
+  max-width: 300px;
+}
+
+#widget-left {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+
+#widget-center {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#widget-right {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.widget {
+  background: rgba(0,0,0,0.7);
+  padding: 16px 20px;
+  border-radius: 10px;
+  min-width: 200px;
+  color: white;
+}
+
+.widget h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  opacity: 0.7;
+  font-family: sans-serif;
+}
+
+.widget p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.widget hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin: 10px 0;
+}
+
+#news-headline a {
+  color: white;
+}
+
+#view-all-news {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+#news-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+#news-modal.hidden {
+  display: none;
+}
+
+#news-modal-content {
+  background: #100224;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 70vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+#close-news-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#news-modal-list li {
+  margin-bottom: 12px;
+}
+
+#news-modal-list a {
+  color: #a78bfa;
+}
+
+h1 {
+  font-family: 'Monoton', sans-serif;
 }

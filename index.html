@@ -7,10 +7,64 @@
     <title>astronomy</title>
   </head>
   <body>
-    <div id="app"></div>
-    <div id="iss"></div>
-    <div id="moon"></div>
-    <div id="launch"></div>
+    <div id="clock"></div>
+    <button id="settings-btn">⚙️</button>
+
+    <div id="settings-panel" class="hidden">
+      <h2>Settings</h2>
+      <div class="toggle-grid">
+        <label><input type="checkbox" id="toggle-iss"> ISS Location</label>
+        <label><input type="checkbox" id="toggle-moon"> Moon Phase</label>
+        <label><input type="checkbox" id="toggle-launch"> Next Launch</label>
+        <label><input type="checkbox" id="toggle-news"> Astronomy News</label>
+      </div>
+      <button id="close-settings">Close</button>
+    </div>
+
+    <div id="search-container">
+      <div id="search-bar-wrapper">
+        <button id="engine-btn"><img src="brave.png" alt="Brave" /></button>
+        <div id="engine-dropdown" class="hidden">
+          <div class="engine-option" data-url="https://search.brave.com/search?q=" data-icon="brave.png">
+            <img src="brave.png" alt="Brave" /> Brave
+          </div>
+          <div class="engine-option" data-url="https://www.google.com/search?q=" data-icon="google.svg.webp">
+            <img src="google.svg.webp" alt="Google" /> Google
+          </div>
+          <div class="engine-option" data-url="https://www.bing.com/search?q=" data-icon="bing.png">
+            <img src="bing.png" alt="Bing" /> Bing
+          </div>
+          <div class="engine-option" data-url="https://duckduckgo.com/?q=" data-icon="duckduckgo.png">
+            <img src="duckduckgo.png" alt="DuckDuckGo" /> DuckDuckGo
+          </div>
+          <div class="engine-option" data-url="https://www.ecosia.org/search?q=" data-icon="ecosia.jpg">
+            <img src="ecosia.jpg" alt="Ecosia" /> Ecosia
+          </div>
+          <div class="engine-option" data-url="https://www.qwant.com/?q=" data-icon="qwant.png">
+            <img src="qwant.png" alt="Qwant" /> Qwant
+          </div>
+          <div class="engine-option" data-url="https://www.startpage.com/sp/search?query=" data-icon="startpage.png">
+            <img src="startpage.png" alt="Startpage" /> Startpage
+          </div>
+        </div>
+        <input type="text" id="search-bar" placeholder="Ask anything, find anything..." />
+      </div>
+    </div>
+
+    <div id="apod-caption"></div>
+
+    <div id="widget-left"></div>
+    <div id="widget-center"></div>
+    <div id="widget-right"></div>
+
+    <div id="news-modal" class="hidden">
+      <div id="news-modal-content">
+        <button id="close-news-modal">✕</button>
+        <h2>Astronomy News</h2>
+        <ul id="news-modal-list"></ul>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
