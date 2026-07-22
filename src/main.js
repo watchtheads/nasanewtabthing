@@ -164,17 +164,18 @@ function renderWidgets() {
 }
 
 function loadISS() {
-  fetch('http://api.open-notify.org/iss-now.json')
+  fetch('https://api.wheretheiss.at/v1/satellites/25544')
     .then(response => response.json())
     .then(data => {
       const el = document.querySelector("#iss-row");
-      if (el) el.innerHTML = `<h3>ISS Location</h3><p>Lat: ${data.iss_position.latitude}, Lon: ${data.iss_position.longitude}</p>`;
+      if (el) el.innerHTML = `<h3>ISS Location</h3><p>Lat: ${data.latitude.toFixed(4)}, Lon: ${data.longitude.toFixed(4)}</p>`;
     })
     .catch(err => {
       const el = document.querySelector("#iss-row");
       if (el) el.innerHTML = `<h3>ISS Location</h3><p>Error: ${err.message}</p>`;
     });
 }
+
 
 function loadMoon() {
   const el = document.querySelector("#moon-row");
