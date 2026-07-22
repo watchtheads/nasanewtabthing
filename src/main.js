@@ -231,3 +231,17 @@ document.querySelector("#search-bar-wrapper").addEventListener("click", (e) => {
     document.querySelector("#search-bar").focus();
   }
 });
+const luckyLinks = [
+  "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // not a rick roll
+  "https://zoomquilt.org/", // 
+  "https://h1ghf1ve.me/",
+  "https://cat-bounce.com/",
+  "https://stonkrider.com/",
+  "https://papertoilet.com/",
+  "https://Zombo.com/",
+];
+
+document.querySelector("#yayimfeelinglucky-btn").addEventListener("click", () => {
+  const random = luckyLinks[Math.floor(Math.random() * luckyLinks.length)];
+  window.open(random, "_blank");
+});
