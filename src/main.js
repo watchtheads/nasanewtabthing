@@ -53,6 +53,7 @@ document.querySelectorAll(".engine-option").forEach(option => {
   option.addEventListener("click", () => {
     currentEngine = option.dataset.url;
     localStorage.setItem("search-engine", currentEngine);
+    localStorage.setItem("search-engine-icon", option.dataset.icon);
     engineBtn.innerHTML = `<img src="${option.dataset.icon}" alt="engine" />`;
     engineDropdown.classList.add("hidden");
   });
